@@ -1,0 +1,59 @@
+{
+  "name": "ts-next-electron-template",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "author": "rayray",
+  "license": "MIT",
+  "keywords": [
+    ""
+  ],
+  "scripts": {
+    "i:env": "npx cpy  ./env_default . --rename=.env",
+    "b:dev": "npx webpack --config webpack.dev.js",
+    "b:prod": "cd next && yarn export && cd .. && npx webpack --config webpack.prod.js",
+    "x:dev": "npx cross-env ELECTRON_IS_DEV=1 npx electron ./.dev/main.js",
+    "x:prod": "npx cross-env ELECTRON_IS_DEV=0 npx electron ./.prod/main.js",
+    "bx:dev": "npm run b:dev && npm run x:dev",
+    "bx:prod": "npm run b:prod && npm run x:prod",
+    "c:dev": "npx rimraf -rf ./.dev",
+    "c:prod": "npx rimraf -rf ./.prod",
+    "c:all": "npm run c:dev && npm run c:prod",
+    "d:win32": "./node_modules/.bin/electron-builder --config ./deploy/scripts/win32/build-win32.yml",
+    "set:name": "node project/set-name.js",
+    "set:version": "node project/set-version.js"
+  },
+  "private": true,
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "electron-is-dev": "^2.0.0",
+    "log4js": "^6.3.0"
+  },
+  "devDependencies": {
+    "@types/dotenv": "^8.2.0",
+    "@types/electron": "^1.6.10",
+    "@types/electron-builder": "^2.8.0",
+    "@types/electron-devtools-installer": "^2.2.1",
+    "@types/electron-is-dev": "^1.1.1",
+    "@types/log4js": "^2.3.5",
+    "@types/node": "^17.0.6",
+    "@typescript-eslint/eslint-plugin": "^5.9.0",
+    "@typescript-eslint/parser": "^5.9.0",
+    "asar": "^3.1.0",
+    "copy-webpack-plugin": "^10.2.0",
+    "cpy-cli": "^3.1.1",
+    "cross-env": "^7.0.3",
+    "electron": "^16.0.5",
+    "electron-builder": "^22.14.5",
+    "electron-devtools-installer": "^3.2.0",
+    "eslint": "^8.6.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "^2.5.1",
+    "rimraf": "^3.0.2",
+    "ts-loader": "^9.2.6",
+    "typescript": "^4.5.4",
+    "webpack": "^5.65.0",
+    "webpack-cli": "^4.9.1"
+  }
+}

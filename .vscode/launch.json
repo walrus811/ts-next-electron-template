@@ -1,0 +1,40 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Electron: Main",
+      "type": "node",
+      "request": "launch",
+      "preLaunchTask": "build-dev",
+      "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron",
+      "outputCapture": "std",
+      "windows": {
+        "runtimeExecutable": "${workspaceFolder}\\node_modules\\.bin\\electron.cmd"
+      },
+      "runtimeArgs": [
+        "--remote-debugging-port=9223",
+        "${workspaceFolder}/.dev/main.js"
+      ],
+      "program": "${workspaceFolder}/.dev/main.js",
+      "cwd": "${workspaceRoot}",
+      "sourceMaps": true
+    },
+    {
+      "name": "Electron: Main(No Build)",
+      "type": "node",
+      "request": "launch",
+      "outputCapture": "std",
+      "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron",
+      "windows": {
+        "runtimeExecutable": "${workspaceFolder}\\node_modules\\.bin\\electron.cmd"
+      },
+      "runtimeArgs": [
+        "--remote-debugging-port=9223",
+        "${workspaceFolder}/.dev/main.js"
+      ],
+      "program": "${workspaceFolder}/.dev/main.js",
+      "cwd": "${workspaceRoot}",
+      "sourceMaps": true
+    }
+  ]
+}

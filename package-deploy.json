@@ -1,0 +1,9 @@
+{
+  "name": "ts-next-electron-template",
+  "version": "0.0.1",
+  "description": "",
+  "main": "main.js",
+  "scripts": {},
+  "devDependencies": {},
+  "dependencies": {}
+}

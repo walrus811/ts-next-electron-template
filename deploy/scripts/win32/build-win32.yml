@@ -1,0 +1,26 @@
+productName: "App Name"
+appId: "com.app.name"
+
+asar: true
+
+win:
+  icon: "static/icon.ico"
+  target:
+    - target: nsis
+      arch:
+        - x64
+        - ia32
+
+nsis:
+  oneClick: false
+  perMachine: true
+  allowToChangeInstallationDirectory: true
+  shortcutName: "App Name"
+  include: "deploy/scripts/win32/nsis_script.nsh"
+  createStartMenuShortcut: false
+
+directories:
+  app: ".prod"
+  output: "deploy/output/win32"
+#extraFiles:
+#  - "program/abc.exe"
