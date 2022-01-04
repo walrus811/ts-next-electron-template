@@ -12,8 +12,7 @@ const instanceLock = app.requestSingleInstanceLock();
 
 const createMainWindow = async (): Promise<void> =>
 {
-  console.log("나는 살아있어요!");
-  console.log(isDev);
+  console.log(`is dev? > ${isDev}`);
   let win = new BrowserWindow({
     width: DEFAULT_WIDTH,
     height: DEFAULT_HEIGHT,
@@ -32,7 +31,6 @@ const createMainWindow = async (): Promise<void> =>
   const productionFile = `file://${__dirname}/index.html`;
   if (!isDev)
   {
-    //우회해서 여는 방법이 존재한다고 하니 혹시 몰라 닫아줌.
     win.webContents.on("devtools-opened", () =>
     {
       win.webContents.closeDevTools();
@@ -70,14 +68,6 @@ if (instanceLock)
       workingDirectory: string
     ) =>
     {
-      /*
-      if (ProgramState.mainWindow)
-      {
-        if (ProgramState.mainWindow.isMinimized())
-          ProgramState.mainWindow.restore();
-        ProgramState.mainWindow.focus();
-      }
-       */
     }
   );
 
