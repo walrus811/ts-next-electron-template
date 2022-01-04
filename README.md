@@ -4,11 +4,13 @@ This project is for boilerplate of [Electron](https://www.electronjs.org/) with 
 
 You can start use developing Electron app with Next.js and Typescript easliy 😃!
 
-1. [Quick Start](#-1.-Quick-Start)
-2. [VS code debug for Electron](#-2.-VS-code-debug-for-Electron)
-3. [How to package app](#-3.-How-to-package-app)
+1. [Quick Start](#first)
+2. [VS code debug for Electron](#second)
+3. [How to package app](#third)
 
 ---
+
+<a id="first"></a>
 
 ## 1. Quick Start
 
@@ -76,6 +78,8 @@ $ yarn bx:dev
 
 ---
 
+<a id="second"></a>
+
 ## 2. VS code debug for Electron
 
 There's already debug setting for Electorn, so you just press F5(in Windows)!
@@ -92,6 +96,8 @@ If you want to debug only without changing source files, It's the good option to
 ![debug2](./readme/debug2.png)
 
 ---
+
+<a id="third"></a>
 
 ## 3. How to package app
 
