@@ -20,8 +20,8 @@
     "c:prod": "npx rimraf -rf ./.prod",
     "c:all": "npm run c:dev && npm run c:prod",
     "d:win32": "./node_modules/.bin/electron-builder --config ./deploy/scripts/win32/build-win32.yml",
-    "set:name": "node project/set-name.js",
-    "set:version": "node project/set-version.js"
+    "set:name": "node scripts/set-name.js",
+    "set:version": "node scripts/set-version.js"
   },
   "private": true,
   "dependencies": {
