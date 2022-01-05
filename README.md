@@ -52,7 +52,7 @@ $ yarn set:vversion 0.0.1
 version is bumped up to 0.0.1
 ```
 
-5. run next with development mode
+5. run Next and Electron with development mode
 
 ```bash
 $ cd next
