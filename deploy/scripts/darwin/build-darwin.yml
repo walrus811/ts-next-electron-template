@@ -1,0 +1,17 @@
+productName: "App Name"
+appId: "com.app.name"
+
+asar: true
+
+mac:
+  category: "public.app-category.utilities"
+  icon: "static/icon.icns"
+  target: "dmg"
+
+dmg:
+  title: "App Name"
+  icon: "static/icon.icns"
+
+directories:
+  app: ".prod"
+  output: "deploy/output/darwin"
