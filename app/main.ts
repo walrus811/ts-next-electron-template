@@ -9,6 +9,10 @@ import { APP_DISPLAY_NAME, DEFAULT_HEIGHT, DEFAULT_WIDTH } from "./constants";
 import path from "path";
 import mainStore from "./models/MainStore";
 
+import "./ipcHandlers";
+import { IpcCommandsToRenderer, MainStoreKeys } from "./shared/types/ipc";
+import { getSpecialIpcName } from "./utils/format";
+
 const instanceLock = app.requestSingleInstanceLock();
 
 const createMainWindow = async (): Promise<void> =>
@@ -39,7 +43,14 @@ const createMainWindow = async (): Promise<void> =>
   }
   const debugPort = process.env.RENDERER_PORT;
   win.loadURL(isDev ? `http://localhost:${debugPort}` : productionFile);
-  mainStore.mainWindow = win;
+  mainStore[MainStoreKeys.mainWindow] = win;
+  mainStore[MainStoreKeys.Test] = "I'm from main store!";
+  setInterval(() =>
+  {
+    //The way send data from main to renderer
+    //You can check how to deal sent data in the renderer at /next/src/index.tsx
+    win.webContents.send(getSpecialIpcName(IpcCommandsToRenderer.HeapUsed, "unique"), process.memoryUsage().heapUsed);
+  }, 1000);
   if (isDev)
   {
     try
@@ -69,11 +80,12 @@ if (instanceLock)
     "second-instance",
     () =>
     {
-      if (mainStore.mainWindow)
+      const window = mainStore[MainStoreKeys.mainWindow] as BrowserWindow;
+      if (window)
       {
-        if (mainStore.mainWindow.isMinimized())
-          mainStore.mainWindow.restore();
-        mainStore.mainWindow.focus();
+        if (window.isMinimized())
+          window.restore();
+        window.focus();
       }
     }
   );

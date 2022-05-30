@@ -1,9 +1,6 @@
-import { BrowserWindow } from "electron";
-
 class MainStore
 {
-  mainWindow: BrowserWindow | null = null;
-
+  [key: string]: unknown;
 }
 
 const mainStore = new MainStore();

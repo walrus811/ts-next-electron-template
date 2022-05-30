@@ -1,4 +1,5 @@
 import { contextBridge, ipcRenderer } from "electron";
+import { IpcCommandsToMain, MainStoreKeys } from "./shared/types/ipc";
 import { getSpecialIpcName } from "./utils/format";
 
 contextBridge.exposeInMainWorld("ipc", {
@@ -6,9 +7,13 @@ contextBridge.exposeInMainWorld("ipc", {
   {
     ipcRenderer.send(channel, arg);
   },
-  electronIpcInvokeSync: (channel: string, ...arg: Array<unknown>) =>
+  electronIpcInvoke: (channel: string, ...arg: Array<unknown>) =>
   {
     return ipcRenderer.invoke(channel, arg);
+  },
+  electronIpcMainStore: (key: MainStoreKeys) =>
+  {
+    return ipcRenderer.invoke(IpcCommandsToMain.MainStore, key);
   },
   electronIpcOn: (
     channel: string,
