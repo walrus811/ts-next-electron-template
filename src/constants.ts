@@ -1,4 +1,4 @@
-export const APP_DISPLAY_NAME: string = "App Name";
+export const APP_DISPLAY_NAME = "App Name";
 
-export const DEFAULT_WIDTH: number = 940;
-export const DEFAULT_HEIGHT: number = 740;
+export const DEFAULT_WIDTH = 940;
+export const DEFAULT_HEIGHT = 740;

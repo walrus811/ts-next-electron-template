@@ -7,13 +7,14 @@ import installExtension, {
 } from "electron-devtools-installer";
 import { APP_DISPLAY_NAME, DEFAULT_HEIGHT, DEFAULT_WIDTH } from "./constants";
 import path from "path";
+import mainStore from "./models/MainStore";
 
 const instanceLock = app.requestSingleInstanceLock();
 
 const createMainWindow = async (): Promise<void> =>
 {
   console.log(`is dev? > ${isDev}`);
-  let win = new BrowserWindow({
+  const win = new BrowserWindow({
     width: DEFAULT_WIDTH,
     height: DEFAULT_HEIGHT,
     resizable: true,
@@ -38,6 +39,7 @@ const createMainWindow = async (): Promise<void> =>
   }
   const debugPort = process.env.RENDERER_PORT;
   win.loadURL(isDev ? `http://localhost:${debugPort}` : productionFile);
+  mainStore.mainWindow = win;
   if (isDev)
   {
     try
@@ -45,6 +47,7 @@ const createMainWindow = async (): Promise<void> =>
       const extenstionName = await (<Promise<string>>(
         installExtension(REACT_DEVELOPER_TOOLS)
       ));
+      console.log(`The extension, ${extenstionName} has installed`);
     } catch (err)
     {
     }
@@ -53,24 +56,27 @@ const createMainWindow = async (): Promise<void> =>
 
 app.on("quit", (event: Electron.Event, code: number) =>
 {
+  console.log(`The app has been quit, code : ${code}`);
 });
 process.on("uncaughtException", (err: Error) =>
 {
+  console.log(`The app has been quit by uncaughtException, ${err.message}`);
 });
 
 if (instanceLock)
 {
   app.on(
     "second-instance",
-    (
-      event: Electron.Event,
-      commandLine: Array<string>,
-      workingDirectory: string
-    ) =>
+    () =>
     {
+      if (mainStore.mainWindow)
+      {
+        if (mainStore.mainWindow.isMinimized())
+          mainStore.mainWindow.restore();
+        mainStore.mainWindow.focus();
+      }
     }
   );
-
   app.on("ready", createMainWindow);
 } else
 {
