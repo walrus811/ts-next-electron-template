@@ -103,8 +103,6 @@ If you want to debug only without changing source files, It's the good option to
 
 This boilerplate uses [electron-builder](https://www.electron.build/) for packaging.
 
-For now win32 installer is only option you can use. If you want to package the app targeting OS X(darwin) or Linux, please check the [electron-builder docs](https://www.electron.build/).
-
 ### Win32
 
 1. build the source file for production
@@ -134,3 +132,28 @@ $ yarn d:win32
 ![package1](./readme/package1.png)
 
 ![package2](./readme/package2.png)
+
+### Darwin(OS X, as DMG)
+
+1. build the source file for production
+
+```bash
+$ pwd
+app/my_app
+
+$ yarn b:prod
+```
+
+2. edit build script for darwin
+
+> you can find all options in [electron-builder docs](https://www.electron.build/)
+
+- /deploy/scripts/darwin/build-darwin.yml
+
+3. package the app
+
+```bash
+$ yarn d:darwin
+```
+
+4. you can find the output in `/deploy/output/darwin`
