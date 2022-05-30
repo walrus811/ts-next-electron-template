@@ -43,7 +43,7 @@ $ yarn
 ```bash
 $ cd ..
 $ pwd
-src/my_app
+app/my_app
 
 $ yarn set:name my_app
 name is changed to my_app
@@ -57,7 +57,7 @@ version is bumped up to 0.0.1
 ```bash
 $ cd next
 $ pwd
-src/my_app/next
+app/my_app/next
 
 $ yarn dev
 ready - started server on 0.0.0.0:3000, url: http://localhost:3000
@@ -67,7 +67,7 @@ event - compiled client and server successfully in 173 ms (174 modules)
 
 $ cd ..
 $ pwd
-src/my_app
+app/my_app
 
 $ yarn bx:dev
 ```
@@ -111,7 +111,7 @@ For now win32 installer is only option you can use. If you want to package the a
 
 ```bash
 $ pwd
-src/my_app
+app/my_app
 
 $ yarn b:prod
 ```

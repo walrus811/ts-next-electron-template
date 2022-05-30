@@ -3,8 +3,8 @@ const CopyPlugin = require("copy-webpack-plugin");
 module.exports = {
   mode: "production",
   entry: {
-    main: "./src/main.ts",
-    preload: "./src/preload.ts",
+    main: "./app/main.ts",
+    preload: "./app/preload.ts",
   },
   target: "electron-main",
   resolve: {
@@ -14,7 +14,7 @@ module.exports = {
     rules: [
       {
         test: /\.ts$/,
-        include: /src/,
+        include: /app/,
         use: [
           {
             loader: "ts-loader",
