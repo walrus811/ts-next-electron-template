@@ -1,8 +1,8 @@
 # TS-NEXT-ELECTRON-TEMPLATE 🚀
 
-This project is for boilerplate of [Electron](https://www.electronjs.org/) with [Next.js](https://nextjs.org/) and [Typescript](https://www.typescriptlang.org/).
+This project is the boilerplate of [Electron](https://www.electronjs.org/) with [Next.js](https://nextjs.org/) and [Typescript](https://www.typescriptlang.org/).
 
-You can start use developing Electron app with Next.js and Typescript easliy 😃!
+You can start developing Electron app with Next.js and Typescript easliy 😃!
 
 1. [Quick Start](#first)
 2. [VS code debug for Electron](#second)
