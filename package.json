@@ -1,6 +1,6 @@
 {
-  "name": "ts-next-electron-template",
-  "version": "1.0.0",
+  "name": "keyflow-compressor",
+  "version": "0.0.1",
   "description": "",
   "main": "main.js",
   "author": "rayray",
@@ -9,6 +9,7 @@
     ""
   ],
   "scripts": {
+    "i:clear": "npx rimraf README.md && npx rimraf readme",
     "i:env": "npx cpy  ./env_default . --rename=.env",
     "b:dev": "npx webpack --config webpack.dev.js",
     "b:prod": "cd next && yarn export && cd .. && npx webpack --config webpack.prod.js",
